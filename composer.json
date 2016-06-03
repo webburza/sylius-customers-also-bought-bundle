@@ -22,5 +22,5 @@
     },
     "require": {
         "sylius/core": "^0.17"
-    },
+    }
 }
