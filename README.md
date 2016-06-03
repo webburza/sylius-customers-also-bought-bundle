@@ -1,7 +1,7 @@
 # Sylius Order Association Bundle
 
 This bundle adds a command to generate product associations from existing orders to Sylius e-commerce platform. Those
-associations can be used to show a "Customers Who Bought This Item Also Bought" section.
+associations can be used to show a **"Customers Who Bought This Item Also Bought"** section.
 
 ---
 
