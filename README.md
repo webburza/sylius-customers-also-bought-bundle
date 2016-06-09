@@ -36,13 +36,6 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
 
   If the command is behaving unusually or if you want more information on what it's doing, add a verbosity flag (-v)
 
-## Sylius version
-
-  If you're using Sylius 0.17 and you have installed it as it's suggested on the Sylius site, you might need to update
-  your sylius/sylius package with composer to get the actual 0.17 version. If you don't have the latest 0.17 version of sylius/sylius
-  this bundle's command will silently fail to delete old associations. Cases when associations need to be deleted should
-  be weird and unusual, because you don't generally delete orders from your database.
-
 ## License
 
 This bundle is available under the [MIT license](LICENSE).
