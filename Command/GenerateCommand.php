@@ -36,8 +36,7 @@ class GenerateCommand extends ContainerAwareCommand
         $this->output->writeln('<info>Checking association types...</info>');
         $associationType = $this->getAssociationType($manager);
 
-        if (! $associationType)
-        {
+        if (! $associationType) {
             $this->output->writeln('<info>Creating association type...</info>');
             $associationType = $this->createAssociationType($manager);
         }
@@ -109,8 +108,7 @@ class GenerateCommand extends ContainerAwareCommand
 
         $query = $queryBuilder->getQuery();
 
-        if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERY_VERBOSE)
-        {
+        if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERY_VERBOSE) {
             $this->output->writeln('Running query:' . $query->getSQL());
         }
 
@@ -118,8 +116,7 @@ class GenerateCommand extends ContainerAwareCommand
 
         $products = array();
         $orders = array();
-        foreach ($orderProductsResult as $orderProduct)
-        {
+        foreach ($orderProductsResult as $orderProduct) {
             $products[$orderProduct['product_id']][] = $orderProduct['order_id'];
             $orders[$orderProduct['order_id']][] = $orderProduct['product_id'];
         }
@@ -127,21 +124,14 @@ class GenerateCommand extends ContainerAwareCommand
         unset($orderProductsResult);
 
         $productRelations = array();
-        foreach ($products as $productId => $productOrders)
-        {
+        foreach ($products as $productId => $productOrders) {
             $relatedProducts = array();
-            foreach ($productOrders as $orderId)
-            {
-                foreach ($orders[$orderId] as $relatedProductId)
-                {
-                    if ($relatedProductId != $productId)
-                    {
-                        if (!isset($relatedProducts[$relatedProductId]))
-                        {
+            foreach ($productOrders as $orderId) {
+                foreach ($orders[$orderId] as $relatedProductId) {
+                    if ($relatedProductId != $productId) {
+                        if (!isset($relatedProducts[$relatedProductId])) {
                             $relatedProducts[$relatedProductId] = 1;
-                        }
-                        else
-                        {
+                        } else {
                             $relatedProducts[$relatedProductId]++;
                         }
                     }
@@ -175,23 +165,17 @@ class GenerateCommand extends ContainerAwareCommand
 
         /** @var \Sylius\Component\Core\Model\Product[] $products */
         $productObjects = array();
-        foreach ($products as $product)
-        {
-            if (!isset($associations[$product->getId()]))
-            {
+        foreach ($products as $product) {
+            if (!isset($associations[$product->getId()])) {
                 $association = $associationRepository->findOneBy(array('owner' => $product->getId(), 'type' => $associationType->getId()));
 
-                if ($association)
-                {
-                    if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE)
-                    {
+                if ($association) {
+                    if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
                         $this->output->writeln('Removing association ' . $association->getId() . ' of product ' . $product->getId());
                     }
                     $manager->remove($association);
                 }
-            }
-            else
-            {
+            } else {
                 $productObjects[$product->getId()] = $product;
             }
         }
@@ -199,47 +183,36 @@ class GenerateCommand extends ContainerAwareCommand
 
         unset($products);
 
-        foreach ($associations as $productId => $productAssociations)
-        {
+        foreach ($associations as $productId => $productAssociations) {
             /** @var Association $association */
             $association = $associationRepository->findOneBy(array('owner' => $productId, 'type' => $associationType->getId()));
 
             $productsToAdd = $productAssociations;
 
-            if ($association)
-            {
+            if ($association) {
                 /** @var Product[] $associatedProducts */
                 $associatedProducts = $association->getAssociatedObjects();
-                foreach ($associatedProducts as $associatedProduct)
-                {
-                    if (!isset($associations[$productId][$associatedProduct->getId()]))
-                    {
-                        if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE)
-                        {
+                foreach ($associatedProducts as $associatedProduct) {
+                    if (!isset($associations[$productId][$associatedProduct->getId()])) {
+                        if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
                             $this->output->writeln(
                                 'Removing product ' . $associatedProduct->getId() . ' from association ' . $association->getId() . ' of product ' . $productId
                             );
                         }
 
                         $association->removeAssociatedObject($associatedProduct);
-                    }
-                    else
-                    {
+                    } else {
                         unset($productsToAdd[$associatedProduct->getId()]);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 $association = $associationFactory->createNew();
                 $association->setType($associationType);
                 $association->setOwner($productObjects[$productId]);
             }
 
-            foreach ($productsToAdd as $productToAdd => $weight)
-            {
-                if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE)
-                {
+            foreach ($productsToAdd as $productToAdd => $weight) {
+                if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
                     $this->output->writeln(
                         'Adding product ' . $productToAdd . ' to association ' . $association->getId() . ' of product ' . $productId
                     );
