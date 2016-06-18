@@ -26,7 +26,15 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   }
   ```
 
-  3. This bundle adds a console command that either generates or updates associations for all products. You should run
+  3. Configure a limit for associations per product. This way you can associate only the most often bought together
+  products to each product. To confure the limit add this to your `app/config/config.yml`:
+
+  ```yaml
+  webburza_sylius_order_association:
+      association_limit: 5
+  ```
+
+  4. This bundle adds a console command that either generates or updates associations for all products. You should run
   it initially to generate associations and after that periodically to update them. It will create a new association
   type and use it for all generated associations.
 

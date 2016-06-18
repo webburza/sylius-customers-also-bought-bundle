@@ -141,6 +141,13 @@ class GenerateCommand extends ContainerAwareCommand
             $productRelations[$productId] = $relatedProducts;
         }
 
+        $associationLimit = $this->getContainer()->getParameter('webburza.sylius.order_association_bundle.association_limit');
+        if ($associationLimit > 0) {
+            foreach ($productRelations as $productId => $relatedProducts) {
+                $productRelations[$productId] = array_slice($relatedProducts, 0, $associationLimit, true);
+            }
+        }
+
         return $productRelations;
     }
 
