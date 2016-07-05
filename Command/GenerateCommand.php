@@ -8,6 +8,7 @@ use Sylius\Component\Association\Model\AssociationType;
 use Sylius\Component\Core\Model\Product;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateCommand extends ContainerAwareCommand
@@ -22,7 +23,9 @@ class GenerateCommand extends ContainerAwareCommand
         $this
             ->setName('webburza:sylius-order-association:generate')
             ->setDescription("Generates product associations based on previous orders.")
-            ->setHelp("Usage:  <info>$ app/console webburza:sylius-order-association:generate</info>")
+            ->setDefinition(array(
+                new InputOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'Association limit per product', null)
+            ))
         ;
     }
 
@@ -42,7 +45,7 @@ class GenerateCommand extends ContainerAwareCommand
         }
 
         $this->output->writeln('<info>Calculating product associations...</info>');
-        $associations = $this->calculateAssociations($manager);
+        $associations = $this->calculateAssociations($manager, $input->getOption('limit'));
 
         $this->output->writeln('<info>Updating product associations with new data...</info>');
         $this->generateAssociations($manager, $associationType, $associations);
@@ -92,10 +95,11 @@ class GenerateCommand extends ContainerAwareCommand
      * Create all required permission entries.
      *
      * @param EntityManager $manager
+     * @param int|null $associationLimit
      *
      * @return array
      */
-    protected function calculateAssociations($manager)
+    protected function calculateAssociations($manager, $associationLimit = null)
     {
         $queryBuilder = $manager->createQueryBuilder();
         $queryBuilder
@@ -141,7 +145,12 @@ class GenerateCommand extends ContainerAwareCommand
             $productRelations[$productId] = $relatedProducts;
         }
 
-        $associationLimit = $this->getContainer()->getParameter('webburza.sylius.order_association_bundle.association_limit');
+        if ($associationLimit === null) {
+            $associationLimit = $this->getContainer()->getParameter(
+                'webburza.sylius.order_association_bundle.association_limit'
+            );
+        }
+
         if ($associationLimit > 0) {
             foreach ($productRelations as $productId => $relatedProducts) {
                 $productRelations[$productId] = array_slice($relatedProducts, 0, $associationLimit, true);

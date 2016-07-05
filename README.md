@@ -27,7 +27,7 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   ```
 
   3. Configure a limit for associations per product. This way you can associate only the most often bought together
-  products to each product. To confure the limit add this to your `app/config/config.yml`:
+  products to each product. To configure the limit add this to your `app/config/config.yml`:
 
   ```yaml
   webburza_sylius_order_association:
@@ -43,6 +43,12 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   ```
 
   If the command is behaving unusually or if you want more information on what it's doing, add a verbosity flag (-v)
+
+  You can also specify the association limit via an option when you run the command.
+
+    ```bash
+    $ app/console webburza:sylius-order-association:generate --limit=5
+    ```
 
 ## License
 
