@@ -1,30 +1,5 @@
 default:
     extensions:
-        Behat\MinkExtension:
-            base_url: http://127.0.0.1:8000
-            browser_name: firefox
-            default_session: symfony
-            javascript_session: chrome
-            sessions:
-                symfony:
-                    symfony2: ~
-                chrome:
-                    selenium2:
-                        browser: chrome
-                        capabilities:
-                            browserName: chrome
-                            browser: chrome
-                            version: ""
-                            chrome:
-                                switches:
-                                    - "start-fullscreen"
-                                    - "start-maximized"
-                                    - "no-sandbox"
-                firefox:
-                    selenium2:
-                        browser: firefox
-            show_auto: false
-
         Behat\Symfony2Extension:
             kernel:
                 class: TestKernel
