@@ -1,0 +1,17 @@
+language: php
+
+cache:
+    directories:
+        - vendor
+
+php:
+    - 5.6
+
+before_install:
+    - composer self-update
+
+install:
+    - composer install --no-interaction --prefer-dist
+
+script:
+    - vendor/bin/behat

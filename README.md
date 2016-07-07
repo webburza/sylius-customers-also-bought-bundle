@@ -1,5 +1,8 @@
 # Sylius Order Association Bundle
 
+[![Version](https://img.shields.io/packagist/v/webburza/sylius-order-association-bundle.svg)](https://packagist.org/packages/webburza/sylius-order-association-bundle)
+[![Build Status](https://img.shields.io/travis/webburza/sylius-order-association-bundle/master.svg)](https://travis-ci.org/webburza/sylius-order-association-bundle)
+
 This bundle adds a command to generate product associations from existing orders to Sylius e-commerce platform. Those
 associations can be used to show a **"Customers Who Bought This Item Also Bought"** section.
 
@@ -50,10 +53,19 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
     $ app/console webburza:sylius-order-association:generate --limit=5
     ```
 
+## Tests
+
+For tests we use [Behat](http://behat.org) scenarios.
+After you run `composer install` (on the bundle itself, not your application), run the tests via:
+
+  ```bash
+  $ vendor/bin/behat
+  ```
+
+The tests will run on a cleanly installed application, using in-memory SQLite database,
+to minimize configuration required on the system. This does however mean that you need
+to install/enable SQLite if you don't already use it.
+
 ## License
 
 This bundle is available under the [MIT license](LICENSE).
-
-## To-do
-
-- Tests

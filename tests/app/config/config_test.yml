@@ -1,0 +1,52 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: @SyliusCoreBundle/Resources/config/app/parameters.yml }
+    - { resource: @SyliusCoreBundle/Resources/config/app/main.yml }
+    - { resource: ../../../vendor/sylius/sylius/app/config/security.yml }
+
+framework:
+    test: ~
+    translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: %kernel.debug%
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] }
+    default_locale:  "%locale%"
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+
+stof_doctrine_extensions:
+    default_locale: %locale%
+    orm:
+        default:
+            tree: true
+            sluggable: true
+            timestampable: true
+            loggable: false
+            sortable: true
+
+doctrine:
+    dbal:
+        driver: pdo_sqlite
+        path: :memory:
+        memory: true
+
+doctrine_phpcr:
+    session:
+        backend: %phpcr_backend%
+        workspace: %phpcr_workspace%
+    odm:
+        auto_mapping: true
+        auto_generate_proxy_classes: %kernel.debug%
+
+monolog:
+    handlers:
+        test:
+            type:  test
+            level: error

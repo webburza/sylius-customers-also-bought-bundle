@@ -15,12 +15,28 @@
         {
             "name": "Tin Benjamin Matuka",
             "email": "tin@burza.hr"
+        },
+        {
+            "name": "Yousef Chanan",
+            "email": "yousef@burza.hr"
         }
     ],
     "autoload": {
-        "psr-4": { "Webburza\\Sylius\\OrderAssociationBundle\\": "" }
+        "psr-4": {
+            "Webburza\\Sylius\\OrderAssociationBundle\\": ""
+        }
     },
     "require": {
         "sylius/core": "^0.18"
+    },
+    "require-dev": {
+        "behat/behat": "~3.0",
+        "behat/mink": "~1.6",
+        "behat/mink-browserkit-driver": "~1.2",
+        "behat/mink-extension": "~2.0",
+        "behat/mink-selenium2-driver": "~1.2",
+        "behat/symfony2-extension": "~2.0",
+        "phpunit/phpunit": "~4.1",
+        "sylius/sylius": "^0.18"
     }
 }
