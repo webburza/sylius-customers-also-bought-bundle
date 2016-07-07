@@ -1,7 +1,7 @@
 # Sylius Order Association Bundle
 
-[![Build Status](https://travis-ci.org/webburza/sylius-order-association-bundle.svg?branch=feature/behat)](https://travis-ci.org/webburza/sylius-order-association-bundle)
-
+[![Version](https://img.shields.io/packagist/v/webburza/sylius-order-association-bundle.svg)](https://packagist.org/packages/webburza/sylius-order-association-bundle)
+[![Build Status](https://img.shields.io/travis/webburza/sylius-order-association-bundle/master.svg)](https://travis-ci.org/webburza/sylius-order-association-bundle)
 
 This bundle adds a command to generate product associations from existing orders to Sylius e-commerce platform. Those
 associations can be used to show a **"Customers Who Bought This Item Also Bought"** section.
