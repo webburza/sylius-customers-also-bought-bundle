@@ -6,10 +6,10 @@ default:
                 path: tests/app/TestKernel.php
 
     suites:
-        cli_order_association:
+        cli_customers_also_bought:
             contexts:
                 - FeatureContext:
                     kernel: '@kernel'
 
             filters:
-                tags: "@order_association && @cli"
+                tags: "@customers_also_bought && @cli"

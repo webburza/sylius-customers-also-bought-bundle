@@ -15,7 +15,7 @@ class TestKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new \Webburza\Sylius\OrderAssociationBundle\WebburzaSyliusOrderAssociationBundle()
+            new \Webburza\Sylius\CustomersAlsoBoughtBundle\WebburzaSyliusCustomersAlsoBoughtBundle()
         ];
 
         return array_merge(parent::registerBundles(), $bundles);

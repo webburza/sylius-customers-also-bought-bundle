@@ -1,5 +1,5 @@
-@order_association @cli
-Feature: Generate order associations feature
+@customers_also_bought @cli
+Feature: Generate customers also bought feature
   In order to associate products by orders
   As a Developer
   I want to run a command that associates products by orders
@@ -17,6 +17,8 @@ Feature: Generate order associations feature
       | 000000008 | imelda87@example.com          | pending |
       | 000000009 | imelda87@example.com          | cart    |
       | 000000010 | yousef@example.com            | cart    |
+      | 000000011 | yousef@example.com            | pending |
+      | 000000012 | yousef@example.com            | pending |
     And there are following products:
       | name                              |
       | Sticker 'perferendis'             |
@@ -74,22 +76,30 @@ Feature: Generate order associations feature
     And order "000000010" has the following products:
       | name                              |
       | Sticker 'perferendis'             |
+    And order "000000011" has the following products:
+      | name                              |
+      | Sticker 'nihil'                   |
+      | Sticker 'perferendis'             |
+    And order "000000012" has the following products:
+      | name                              |
+      | Sticker 'nihil'                   |
+      | Mug 'ullam'                       |
 
   Scenario: Trying to run command without existing association type
-    Given there is no "webburza_order_association_bundle" association type named "Customers also ordered"
-    And I run Webburza Sylius Order Association Generate command
+    Given there is no "webburza_customers_also_bought_bundle" association type named "Customers also bought"
+    And I run Webburza Sylius Customers Also Bought Generate command
     Then I should see output "Creating association type..."
-    And there should be "webburza_order_association_bundle" association type named "Customers also ordered"
+    And there should be "webburza_customers_also_bought_bundle" association type named "Customers also bought"
     And the command should finish successfully
 
   Scenario: Trying to run command with existing association type
-    Given there is a "webburza_order_association_bundle" association type named "Customers also ordered"
-    And I run Webburza Sylius Order Association Generate command
+    Given there is a "webburza_customers_also_bought_bundle" association type named "Customers also bought"
+    And I run Webburza Sylius Customers Also Bought Generate command
     Then I should not see output "Creating association type..."
     And the command should finish successfully
 
   Scenario: Trying to generate associations for products
-    Given I run Webburza Sylius Order Association Generate command
+    Given I run Webburza Sylius Customers Also Bought Generate command
     Then I should see output "Updating product associations with new data..."
     And the command should finish successfully
     And product "Sticker 'perferendis'" should only be associated with:
@@ -132,7 +142,7 @@ Feature: Generate order associations feature
 
   Scenario: Trying to generate a limited number of associations per product
     Given association limit per product is 2
-    And I run Webburza Sylius Order Association Generate command
+    And I run Webburza Sylius Customers Also Bought Generate command
     Then I should see output "Updating product associations with new data..."
     And the command should finish successfully
     And product "Sticker 'nihil'" should only be associated with:

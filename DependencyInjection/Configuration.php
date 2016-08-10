@@ -1,6 +1,6 @@
 <?php
 
-namespace Webburza\Sylius\OrderAssociationBundle\DependencyInjection;
+namespace Webburza\Sylius\CustomersAlsoBoughtBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('webburza_sylius_order_association');
+        $rootNode = $treeBuilder->root('webburza_sylius_customers_also_bought');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

@@ -1,7 +1,7 @@
-# Sylius Order Association Bundle
+# Sylius Customers Also Bought Bundle
 
-[![Version](https://img.shields.io/packagist/v/webburza/sylius-order-association-bundle.svg)](https://packagist.org/packages/webburza/sylius-order-association-bundle)
-[![Build Status](https://img.shields.io/travis/webburza/sylius-order-association-bundle/master.svg)](https://travis-ci.org/webburza/sylius-order-association-bundle)
+[![Version](https://img.shields.io/packagist/v/webburza/sylius-customers-also-bought-bundle.svg)](https://packagist.org/packages/webburza/sylius-customers-also-bought-bundle)
+[![Build Status](https://img.shields.io/travis/webburza/sylius-customers-also-bought-bundle/master.svg)](https://travis-ci.org/webburza/sylius-customers-also-bought-bundle)
 
 This bundle adds a command to generate product associations from existing orders to Sylius e-commerce platform. Those
 associations can be used to show a **"Customers Who Bought This Item Also Bought"** section.
@@ -13,7 +13,7 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   1. require the bundle with Composer:
 
   ```bash
-  $ composer require webburza/sylius-order-association-bundle
+  $ composer require webburza/sylius-customers-also-bought-bundle
   ```
 
   2. enable the bundle in `app/AppKernel.php`:
@@ -23,7 +23,7 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   {
     $bundles = array(
       // ...
-      new \Webburza\Sylius\OrderAssociationBundle\WebburzaSyliusOrderAssociationBundle(),
+      new \Webburza\Sylius\CustomersAlsoBoughtBundle\WebburzaSyliusCustomersAlsoBoughtBundle(),
       // ...
     );
   }
@@ -33,7 +33,7 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   products to each product. To configure the limit add this to your `app/config/config.yml`:
 
   ```yaml
-  webburza_sylius_order_association:
+  webburza_sylius_customers_also_bought:
       association_limit: 5
   ```
 
@@ -42,7 +42,7 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   type and use it for all generated associations.
 
   ```bash
-  $ app/console webburza:sylius-order-association:generate
+  $ app/console webburza:sylius-customers-also-bought:generate
   ```
 
   If the command is behaving unusually or if you want more information on what it's doing, add a verbosity flag (-v)
@@ -50,7 +50,7 @@ associations can be used to show a **"Customers Who Bought This Item Also Bought
   You can also specify the association limit via an option when you run the command.
 
     ```bash
-    $ app/console webburza:sylius-order-association:generate --limit=5
+    $ app/console webburza:sylius-customers-also-bought:generate --limit=5
     ```
 
 ## Tests

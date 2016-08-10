@@ -1,6 +1,6 @@
 <?php
 
-namespace Webburza\Sylius\OrderAssociationBundle\Command;
+namespace Webburza\Sylius\CustomersAlsoBoughtBundle\Command;
 
 use Doctrine\ORM\EntityManager;
 use Sylius\Component\Association\Model\Association;
@@ -21,7 +21,7 @@ class GenerateCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('webburza:sylius-order-association:generate')
+            ->setName('webburza:sylius-customers-also-bought:generate')
             ->setDescription("Generates product associations based on previous orders.")
             ->setDefinition(array(
                 new InputOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'Association limit per product', null)
@@ -65,7 +65,7 @@ class GenerateCommand extends ContainerAwareCommand
         $repository = $this->getContainer()->get('sylius.repository.product_association_type');
 
         // Return association type
-        return $repository->findOneBy(['code' => 'webburza_order_association_bundle']);
+        return $repository->findOneBy(['code' => 'webburza_customers_also_bought_bundle']);
     }
 
     /**
@@ -82,8 +82,8 @@ class GenerateCommand extends ContainerAwareCommand
         /** @var AssociationType $associationType */
         $associationType = $factory->createNew();
 
-        $associationType->setCode('webburza_order_association_bundle');
-        $associationType->setName('Customers also ordered');
+        $associationType->setCode('webburza_customers_also_bought_bundle');
+        $associationType->setName('Customers also bought');
 
         $manager->persist($associationType);
         $manager->flush();
@@ -147,7 +147,7 @@ class GenerateCommand extends ContainerAwareCommand
 
         if ($associationLimit === null) {
             $associationLimit = $this->getContainer()->getParameter(
-                'webburza.sylius.order_association_bundle.association_limit'
+                'webburza.sylius.customers_also_bought_bundle.association_limit'
             );
         }
 

@@ -1,6 +1,6 @@
 {
-    "name": "webburza/sylius-order-association-bundle",
-    "description": "Order association bundle for the Sylius e-commerce platform.",
+    "name": "webburza/sylius-customers-also-bought-bundle",
+    "description": "Customers also bought bundle for the Sylius e-commerce platform.",
     "type": "symfony-bundle",
     "license": "MIT",
     "keywords": [
@@ -23,7 +23,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Webburza\\Sylius\\OrderAssociationBundle\\": ""
+            "Webburza\\Sylius\\CustomersAlsoBoughtBundle\\": ""
         }
     },
     "require": {

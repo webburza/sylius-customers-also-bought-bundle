@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Webburza\Sylius\OrderAssociationBundle\Command\GenerateCommand;
+use Webburza\Sylius\CustomersAlsoBoughtBundle\Command\GenerateCommand;
 
 class FeatureContext implements Context
 {
@@ -211,11 +211,11 @@ class FeatureContext implements Context
     }
 
     /**
-     * @Given I run Webburza Sylius Order Association Generate command
+     * @Given I run Webburza Sylius Customers Also Bought Generate command
      */
-    public function iRunWebburzaSyliusOrderAssociationGenerateCommand()
+    public function iRunWebburzaSyliusCustomersAlsoBoughtGenerateCommand()
     {
-        $commandName = 'webburza:sylius-order-association:generate';
+        $commandName = 'webburza:sylius-customers-also-bought:generate';
 
         $this->application = new Application($this->kernel);
         $this->application->add(new GenerateCommand());
@@ -437,7 +437,7 @@ class FeatureContext implements Context
         $associatedProducts = [];
 
         foreach ($product->getAssociations() as $association) {
-            if ($association->getType()->getCode() == 'webburza_order_association_bundle') {
+            if ($association->getType()->getCode() == 'webburza_customers_also_bought_bundle') {
                 foreach ($association->getAssociatedObjects() as $object) {
                     $associatedProducts[] = $object;
                 }
