@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bd3bf17a1760eb796ea37836255e1e53",
-    "content-hash": "e094008d91e04dd3d625fd6e1415049c",
+    "hash": "6471400ed061eef3d58283228f763049",
+    "content-hash": "28d9724755d8d8f627402f788a068608",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -438,29 +438,27 @@
         },
         {
             "name": "doctrine/data-fixtures",
-            "version": "v1.2.1",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "b3cae5efef97191a08d53d733260f7eb667c16e4"
+                "reference": "bd44f6b6e40247b6530bc8abe802e4e4d914976a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/b3cae5efef97191a08d53d733260f7eb667c16e4",
-                "reference": "b3cae5efef97191a08d53d733260f7eb667c16e4",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/bd44f6b6e40247b6530bc8abe802e4e4d914976a",
+                "reference": "bd44f6b6e40247b6530bc8abe802e4e4d914976a",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.2",
-                "php": "^5.6 || ^7.0"
+                "php": ">=5.3.2"
             },
             "conflict": {
                 "doctrine/orm": "< 2.4"
             },
             "require-dev": {
-                "doctrine/dbal": "^2.5.4",
-                "doctrine/orm": "^2.5.4",
-                "phpunit/phpunit": "^5.4.6"
+                "doctrine/orm": "~2.4"
             },
             "suggest": {
                 "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
@@ -470,7 +468,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -493,7 +491,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2016-06-20 18:08:26"
+            "time": "2015-03-30 12:14:13"
         },
         {
             "name": "doctrine/dbal",
@@ -5673,24 +5671,23 @@
         },
         {
             "name": "payum/payum-bundle",
-            "version": "1.2.4",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PayumBundle.git",
-                "reference": "5be8280d14c47657e6689315cea037356bb5d74b"
+                "reference": "b5a9ac17213b52df688cc48a4ef6347d584400ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/5be8280d14c47657e6689315cea037356bb5d74b",
-                "reference": "5be8280d14c47657e6689315cea037356bb5d74b",
+                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/b5a9ac17213b52df688cc48a4ef6347d584400ed",
+                "reference": "b5a9ac17213b52df688cc48a4ef6347d584400ed",
                 "shasum": ""
             },
             "require": {
-                "payum/core": "^1.2",
+                "payum/core": "^1.3.3",
                 "php": "^5.5.0|^7.0",
                 "symfony/form": "~2.8|~3.0",
                 "symfony/framework-bundle": "~2.8|~3.0",
-                "symfony/twig-bundle": "~2.8|~3.0",
                 "symfony/validator": "~2.8|~3.0"
             },
             "require-dev": {
@@ -5704,9 +5701,10 @@
                 "omnipay/paypal": "~2.0",
                 "omnipay/stripe": "~2.0",
                 "paypal/rest-api-sdk-php": "0.5.*",
-                "payum/jms-payment-bridge": "~1.0@dev",
-                "payum/omnipay-bridge": "~1.0@dev",
-                "payum/payum": "^1.2@dev",
+                "payum/jms-payment-bridge": "^1@dev",
+                "payum/omnipay-bridge": "^1@dev",
+                "payum/payum": "^1.3@dev",
+                "php-http/guzzle6-adapter": "^1",
                 "phpunit/phpunit": "~4.0",
                 "sonata-project/admin-bundle": "~2.4@dev",
                 "stripe/stripe-php": "~1.0",
@@ -5723,7 +5721,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -5769,7 +5767,7 @@
                 "stripe.js",
                 "symfony"
             ],
-            "time": "2016-03-09 16:56:12"
+            "time": "2016-05-31 20:28:14"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -6780,6 +6778,70 @@
             "time": "2016-04-22 13:54:51"
         },
         {
+            "name": "sonata-project/intl-bundle",
+            "version": "2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sonata-project/SonataIntlBundle.git",
+                "reference": "d49bb8156466a9396e186610fe19d62a50c76202"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/d49bb8156466a9396e186610fe19d62a50c76202",
+                "reference": "d49bb8156466a9396e186610fe19d62a50c76202",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/dependency-injection": "~2.2|~3.0",
+                "symfony/http-kernel": "~2.2|~3.0",
+                "symfony/intl": "^2.3.21|~3.0",
+                "symfony/templating": "~2.2|~3.0",
+                "twig/twig": "~1.12"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7.6",
+                "sonata-project/user-bundle": "~2.2",
+                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/security": "~2.2|~3.0",
+                "symfony/security-acl": "~2.2|~3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sonata\\IntlBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sonata Community",
+                    "homepage": "https://github.com/sonata-project/SonataIntlBundle/contributors"
+                },
+                {
+                    "name": "Thomas Rabaix",
+                    "email": "thomas.rabaix@sonata-project.org"
+                }
+            ],
+            "description": "Symfony SonataIntlBundle",
+            "homepage": "https://sonata-project.org/bundles/intl",
+            "keywords": [
+                "date",
+                "intl",
+                "number",
+                "sonata",
+                "time"
+            ],
+            "time": "2016-02-20 16:29:57"
+        },
+        {
             "name": "stof/doctrine-extensions-bundle",
             "version": "v1.2.2",
             "source": {
@@ -6895,21 +6957,22 @@
         },
         {
             "name": "sylius/sylius",
-            "version": "v0.18.0",
+            "version": "v0.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Sylius.git",
-                "reference": "4c527fe3c75408829a51749042ecbff418fabf50"
+                "reference": "4603cc697f856706c9a56876a534eb6ce5c13571"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Sylius/zipball/4c527fe3c75408829a51749042ecbff418fabf50",
-                "reference": "4c527fe3c75408829a51749042ecbff418fabf50",
+                "url": "https://api.github.com/repos/Sylius/Sylius/zipball/4603cc697f856706c9a56876a534eb6ce5c13571",
+                "reference": "4603cc697f856706c9a56876a534eb6ce5c13571",
                 "shasum": ""
             },
             "require": {
                 "doctrine/collections": "~1.2",
                 "doctrine/common": "~2.5",
+                "doctrine/data-fixtures": "~1.1.0",
                 "doctrine/doctrine-bundle": "~1.3",
                 "doctrine/doctrine-cache-bundle": "~1.0",
                 "doctrine/doctrine-fixtures-bundle": "~2.2",
@@ -6937,11 +7000,12 @@
                 "omnipay/omnipay": "~2.3",
                 "payum/omnipay-bridge": "~1.0",
                 "payum/payum": "~1.3",
-                "payum/payum-bundle": "~1.0",
-                "php": "^5.5.9|^7.0",
+                "payum/payum-bundle": "~2.1",
+                "php": "^5.6|^7.0",
                 "php-http/guzzle6-adapter": "~1.1",
                 "polishsymfonycommunity/symfony-mocker-container": "^1.0",
                 "sensio/distribution-bundle": "~3.0",
+                "sonata-project/intl-bundle": "^2.2",
                 "stof/doctrine-extensions-bundle": "~1.1",
                 "swiftmailer/swiftmailer": "~5.0",
                 "symfony-cmf/block-bundle": "~1.2",
@@ -6950,13 +7014,13 @@
                 "symfony-cmf/media-bundle": "~1.2",
                 "symfony-cmf/menu-bundle": "~1.2",
                 "symfony-cmf/routing-bundle": "^1.4",
-                "symfony/assetic-bundle": "^2.6",
-                "symfony/monolog-bundle": "^2.7",
+                "symfony/assetic-bundle": "^2.8",
+                "symfony/monolog-bundle": "^2.8",
                 "symfony/polyfill-iconv": "~1.0",
                 "symfony/polyfill-intl-icu": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/swiftmailer-bundle": "^2.3",
-                "symfony/symfony": "^2.7.9",
+                "symfony/symfony": "^2.8",
                 "twig/extensions": "~1.0",
                 "twig/twig": "~1.11",
                 "webmozart/assert": "^1.0",
@@ -7043,9 +7107,10 @@
                 "lakion/api-test-case": "^1.0@dev",
                 "lakion/mink-debug-extension": "^1.0.3",
                 "malukenho/kawaii-gherkin": "^0.1",
-                "matthiasnoback/symfony-config-test": "^1.4",
-                "matthiasnoback/symfony-dependency-injection-test": "^0.7.6",
+                "matthiasnoback/symfony-config-test": "^2.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^1.0",
                 "mikey179/vfsstream": "^1.6",
+                "pamil/phpspec-generator-extension": "^0.3",
                 "pamil/prophecy-common": "^0.1",
                 "phpspec/phpspec": "^2.4",
                 "phpunit/phpunit": "~4.1",
@@ -7059,7 +7124,7 @@
             "type": "project",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.18-dev"
+                    "dev-master": "0.19-dev"
                 },
                 "incenteev-parameters": {
                     "file": "app/config/parameters.yml"
@@ -7068,8 +7133,10 @@
                 "symfony-web-dir": "web"
             },
             "autoload": {
-                "psr-0": {
-                    "Sylius\\": "src/"
+                "psr-4": {
+                    "Sylius\\Behat\\": "src/Sylius/Behat/",
+                    "Sylius\\Bundle\\": "src/Sylius/Bundle/",
+                    "Sylius\\Component\\": "src/Sylius/Component/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7092,7 +7159,7 @@
             ],
             "description": "E-Commerce platform for PHP, based on Symfony framework.",
             "homepage": "http://sylius.org",
-            "time": "2016-05-23 09:20:42"
+            "time": "2016-07-06 19:57:13"
         },
         {
             "name": "symfony-cmf/block-bundle",
