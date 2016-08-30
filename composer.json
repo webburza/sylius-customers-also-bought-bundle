@@ -27,7 +27,7 @@
         }
     },
     "require": {
-        "sylius/core": "^0.18"
+        "sylius/core": "^0.19"
     },
     "require-dev": {
         "behat/behat": "~3.0",
@@ -37,6 +37,6 @@
         "behat/mink-selenium2-driver": "~1.2",
         "behat/symfony2-extension": "~2.0",
         "phpunit/phpunit": "~4.1",
-        "sylius/sylius": "^0.18"
+        "sylius/sylius": "^0.19"
     }
 }

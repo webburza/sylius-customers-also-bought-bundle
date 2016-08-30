@@ -72,6 +72,11 @@ class FeatureContext implements Context
     protected $productFactory;
 
     /**
+     * @var FactoryInterface
+     */
+    protected $productVariantFactory;
+
+    /**
      * @var ObjectRepository
      */
     protected $orderRepository;
@@ -114,6 +119,7 @@ class FeatureContext implements Context
         $this->associationTypeRepository = $kernel->getContainer()->get('sylius.repository.product_association_type');
         $this->orderFactory = $kernel->getContainer()->get('sylius.factory.order');
         $this->productFactory = $kernel->getContainer()->get('sylius.factory.product');
+        $this->productVariantFactory = $kernel->getContainer()->get('sylius.factory.product_variant');
         $this->orderRepository = $kernel->getContainer()->get('sylius.repository.order');
         $this->productRepository = $kernel->getContainer()->get('sylius.repository.product');
         $this->customerRepository = $kernel->getContainer()->get('sylius.repository.customer');
@@ -281,7 +287,7 @@ class FeatureContext implements Context
             $order->setNumber($row['number']);
             $order->setCustomer($customer);
             $order->setState($row['state']);
-            $order->setCurrency(isset($row['currency']) ? $row['currency'] : '');
+            $order->setCurrencyCode(isset($row['currency_code']) ? $row['currency_code'] : '');
 
             $this->entityManager->persist($order);
         }
@@ -303,7 +309,13 @@ class FeatureContext implements Context
             $product = $this->productFactory->createNew();
 
             $product->setName($row['name']);
-            $product->setPrice(isset($row['price']) ? (int)$row['price'] : 1);
+            $product->setCode(isset($row['code']) ? (int)$row['code'] : md5($row['name']));
+
+            $productVariant = $this->productVariantFactory->createNew();
+            $productVariant->setCode(md5($row['name'] . '_variant'));
+            $productVariant->setPrice(1);
+
+            $product->addVariant($productVariant);
 
             $this->entityManager->persist($product);
         }
@@ -329,7 +341,7 @@ class FeatureContext implements Context
 
             /** @var OrderItemInterface $orderItem */
             $orderItem = $this->orderItemFactory->createNew();
-            $orderItem->setVariant($product->getMasterVariant());
+            $orderItem->setVariant($product->getFirstVariant());
 
             $order->addItem($orderItem);
         }

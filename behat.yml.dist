@@ -3,7 +3,7 @@ default:
         Behat\Symfony2Extension:
             kernel:
                 class: TestKernel
-                path: tests/app/TestKernel.php
+                path: tests/TestKernel.php
 
     suites:
         cli_customers_also_bought:
